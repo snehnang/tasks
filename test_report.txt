@@ -47,6 +47,7 @@ FAIL src/HtmlCss.test.tsx
       at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1728:14)
       at Object.<anonymous> (src/App.tsx:4:1)
 
+PASS src/functions.test.ts
 FAIL src/text.test.tsx
   ● Test suite failed to run
 
@@ -131,14 +132,15 @@ FAIL src/App.test.tsx
       at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1728:14)
       at Object.<anonymous> (src/App.tsx:4:1)
 
-----------|---------|----------|---------|---------|-------------------
-File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------|---------|----------|---------|---------|-------------------
-All files |       0 |      100 |       0 |       0 |                   
- App.tsx  |       0 |      100 |       0 |       0 | 9-17              
-----------|---------|----------|---------|---------|-------------------
-Test Suites: 3 failed, 3 total
-Tests:       0 total
+--------------|---------|----------|---------|---------|-------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------|---------|----------|---------|---------|-------------------
+All files     |   88.88 |      100 |   71.42 |   88.88 |                   
+ App.tsx      |       0 |      100 |       0 |       0 | 9-17              
+ functions.ts |     100 |      100 |     100 |     100 |                   
+--------------|---------|----------|---------|---------|-------------------
+Test Suites: 3 failed, 1 passed, 4 total
+Tests:       5 passed, 5 total
 Snapshots:   0 total
-Time:        3.874 s
+Time:        3.013 s
 Ran all test suites.
