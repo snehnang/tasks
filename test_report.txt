@@ -5,6 +5,7 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+PASS src/arrays.test.ts
 FAIL src/HtmlCss.test.tsx
   ● Test suite failed to run
 
@@ -135,12 +136,13 @@ FAIL src/App.test.tsx
 --------------|---------|----------|---------|---------|-------------------
 File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 --------------|---------|----------|---------|---------|-------------------
-All files     |   88.88 |      100 |   71.42 |   88.88 |                   
+All files     |    97.5 |      100 |   93.93 |   97.18 |                   
  App.tsx      |       0 |      100 |       0 |       0 | 9-17              
+ arrays.ts    |     100 |      100 |     100 |     100 |                   
  functions.ts |     100 |      100 |     100 |     100 |                   
 --------------|---------|----------|---------|---------|-------------------
-Test Suites: 3 failed, 1 passed, 4 total
-Tests:       5 passed, 5 total
+Test Suites: 3 failed, 2 passed, 5 total
+Tests:       14 passed, 14 total
 Snapshots:   0 total
-Time:        3.013 s
+Time:        4.363 s
 Ran all test suites.
