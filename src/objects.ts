@@ -31,9 +31,10 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+    const copyQues = { ...question, options: [...question.options] };
     answer = answer.toLowerCase();
     answer = answer.trim();
-    return question.expected.toLowerCase() === answer;
+    return copyQues.expected.toLowerCase() === answer;
 }
 
 /**
@@ -57,9 +58,9 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
+    const copyQues = { ...question, options: [...question.options] };
     let result = "";
-    result += question.id;
-    result += ": " + question.name.substring(0, 10);
+    result = copyQues.id + ": " + copyQues.name.substring(0, 10);
     return result;
 }
 
@@ -81,11 +82,12 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
+    const copyQues = { ...question, options: [...question.options] };
     let result = "";
-    result = "# " + question.name + "\n" + question.body;
+    result = "# " + copyQues.name + "\n" + copyQues.body;
     if (question.type === "multiple_choice_question") {
-        for (let i = 0; i < question.options.length; i++) {
-            result += "\n- " + question.options[i];
+        for (let i = 0; i < copyQues.options.length; i++) {
+            result += "\n- " + copyQues.options[i];
         }
     }
     return result;
