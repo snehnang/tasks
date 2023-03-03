@@ -85,10 +85,11 @@ export function toMarkdown(question: Question): string {
     const copyQues = { ...question, options: [...question.options] };
     let result = "";
     result = "# " + copyQues.name + "\n" + copyQues.body;
-    if (question.type === "multiple_choice_question") {
-        for (let i = 0; i < copyQues.options.length; i++) {
-            result += "\n- " + copyQues.options[i];
-        }
+    if (copyQues.type === "multiple_choice_question") {
+        // for (let i = 0; i < copyQues.options.length; i++) {
+        //     result += "\n- " + copyQues.options[i];
+        // }
+        result += copyQues.options.map((line: string): string => "\n- " + line);
     }
     return result;
 }
@@ -98,7 +99,9 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    return question;
+    const copyQues = { ...question, options: [...question.options] };
+    copyQues.name = newName;
+    return copyQues;
 }
 
 /**
