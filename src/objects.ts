@@ -84,13 +84,15 @@ export function toShortForm(question: Question): string {
 export function toMarkdown(question: Question): string {
     const copyQues = { ...question, options: [...question.options] };
     let result = "# " + copyQues.name + "\n" + copyQues.body;
-    if (copyQues.type === "multiple_choice_question") {
+    if (copyQues.type == "multiple_choice_question") {
         // for (let i = 0; i < copyQues.options.length; i++) {
         //     result += "\n- " + copyQues.options[i];
         // }
-        return (result += copyQues.options.map(
-            (line: string): string => "\n- " + line
-        ));
+        return (result +=
+            "\n" +
+            copyQues.options
+                .map((line: string): string => "- " + line)
+                .join("\n"));
     }
     return result;
 }
@@ -161,5 +163,11 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-    return contentQuestion;
+    const newQues = {
+        ...contentQuestion,
+        options: [...contentQuestion.options]
+    };
+    newQues.published = false;
+    newQues.points = points;
+    return newQues;
 }
