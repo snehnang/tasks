@@ -6,7 +6,13 @@ import { Question, QuestionType } from "./interfaces/question";
  * that are `published`.
  */
 export function getPublishedQuestions(questions: Question[]): Question[] {
-    const publishedQs = questions.filter(
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const publishedQs = deepCopy.filter(
         (ques: Question): boolean => ques.published === true
     );
     return publishedQs;
