@@ -18,7 +18,19 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const nonEmptyQs = deepCopy.filter(
+        (ques: Question): boolean =>
+            ques.body !== "" ||
+            ques.expected !== "" ||
+            ques.options.length !== 0
+    );
+    return nonEmptyQs;
 }
 
 /***
