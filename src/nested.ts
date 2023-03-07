@@ -47,7 +47,18 @@ export function findQuestion(
     questions: Question[],
     id: number
 ): Question | null {
-    return null;
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const find = deepCopy.find((ques: Question): boolean => ques.id === id);
+    if (find === undefined) {
+        return null;
+    } else {
+        return find;
+    }
 }
 
 /**
