@@ -83,7 +83,14 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const names = deepCopy.map((ques: Question): string => ques.name);
+    return names;
 }
 
 /***
