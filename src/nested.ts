@@ -66,7 +66,16 @@ export function findQuestion(
  * with the given `id`.
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const removed = deepCopy.filter(
+        (ques: Question): boolean => ques.id !== id
+    );
+    return removed;
 }
 
 /***
