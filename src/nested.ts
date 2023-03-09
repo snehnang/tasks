@@ -1,6 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion } from "./objects";
+import { makeBlankQuestion, duplicateQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -359,5 +359,19 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const findQ = findQuestion(deepCopy, targetId);
+    const isId = deepCopy.findIndex(
+        (ques: Question): boolean => ques.id === targetId
+    );
+    if (findQ !== null) {
+        const duplicated = duplicateQuestion(newId, findQ);
+        deepCopy.splice(isId + 1, 0, duplicated);
+    }
+    return deepCopy;
 }
