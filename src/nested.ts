@@ -172,9 +172,15 @@ export function makeAnswers(questions: Question[]): Answer[] {
             options: [...question.options]
         })
     );
-    let answers: Answer[];
-    // answers = deepCopy.map((ques: Question): Answer => )
-    return [];
+    const answers = deepCopy.map(
+        (ques: Question): Answer => ({
+            questionId: ques.id,
+            text: "",
+            submitted: false,
+            correct: false
+        })
+    );
+    return answers;
 }
 
 /***
