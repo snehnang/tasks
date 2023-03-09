@@ -240,7 +240,16 @@ export function addNewQuestion(
     name: string,
     type: QuestionType
 ): Question[] {
-    return [];
+    // can't call makeBlankQuestion
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    let newQ: Question;
+    // newQ.makeBlankQuestion(0, "", "");
+    return [...deepCopy];
 }
 
 /***
@@ -253,7 +262,17 @@ export function renameQuestionById(
     targetId: number,
     newName: string
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const renamed = deepCopy.map(
+        (ques: Question): Question =>
+            ques.id === targetId ? { ...ques, name: newName } : ques
+    );
+    return renamed;
 }
 
 /***
