@@ -188,10 +188,10 @@ export function publishAll(questions: Question[]): Question[] {
             options: [...question.options]
         })
     );
-    const allPublished = deepCopy.map((ques: Question): boolean =>
-        ques.published === false ? (ques.published = true) : true
+    const allPublished = deepCopy.map(
+        (ques: Question): Question => ({ ...ques, published: true })
     );
-    return [];
+    return allPublished;
 }
 
 /***
