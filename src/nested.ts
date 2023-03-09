@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -247,9 +248,7 @@ export function addNewQuestion(
             options: [...question.options]
         })
     );
-    let newQ: Question;
-    // newQ.makeBlankQuestion(0, "", "");
-    return [...deepCopy];
+    return [...deepCopy, makeBlankQuestion(id, name, type)];
 }
 
 /***
