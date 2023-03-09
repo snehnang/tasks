@@ -166,6 +166,14 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    let answers: Answer[];
+    // answers = deepCopy.map((ques: Question): Answer => )
     return [];
 }
 
@@ -174,6 +182,15 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const allPublished = deepCopy.map((ques: Question): boolean =>
+        ques.published === false ? (ques.published = true) : true
+    );
     return [];
 }
 
@@ -182,7 +199,28 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    if (questions.length > 0) {
+        const firstType = questions[0].type;
+        const allTypes = deepCopy.map(
+            (ques: Question): boolean => ques.type === firstType
+        );
+        const allSame = allTypes.filter(
+            (boolVal: boolean): boolean => boolVal === false
+        );
+        if (allSame.length === 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return true;
+    }
 }
 
 /***
