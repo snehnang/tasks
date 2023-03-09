@@ -5,6 +5,7 @@
 Browserslist: caniuse-lite is outdated. Please run:
   npx browserslist@latest --update-db
   Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+PASS src/nested.test.ts
 PASS src/arrays.test.ts
 PASS src/objects.test.ts
 FAIL src/HtmlCss.test.tsx
@@ -137,17 +138,19 @@ FAIL src/App.test.tsx
 ----------------|---------|----------|---------|---------|-------------------
 File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------|---------|----------|---------|---------|-------------------
-All files       |   98.29 |      100 |   95.45 |   98.14 |                   
- src            |   98.29 |      100 |   95.45 |   98.14 |                   
+All files       |   99.08 |    98.18 |    97.8 |   99.03 |                   
+ src            |   99.08 |    98.18 |    97.8 |   99.03 |                   
   App.tsx       |       0 |      100 |       0 |       0 | 9-17              
   arrays.ts     |     100 |      100 |     100 |     100 |                   
   functions.ts  |     100 |      100 |     100 |     100 |                   
+  nested.ts     |     100 |    95.65 |     100 |     100 | 372               
   objects.ts    |     100 |      100 |     100 |     100 |                   
  src/interfaces |       0 |        0 |       0 |       0 |                   
+  answer.ts     |       0 |        0 |       0 |       0 |                   
   question.ts   |       0 |        0 |       0 |       0 |                   
 ----------------|---------|----------|---------|---------|-------------------
-Test Suites: 3 failed, 3 passed, 6 total
-Tests:       24 passed, 24 total
+Test Suites: 3 failed, 4 passed, 7 total
+Tests:       40 passed, 40 total
 Snapshots:   0 total
-Time:        4.155 s
+Time:        4.345 s
 Ran all test suites.
