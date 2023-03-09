@@ -324,7 +324,29 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string
 ): Question[] {
-    return [];
+    const deepCopy = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const edited = deepCopy.map((ques: Question): Question => {
+        if (ques.id !== targetId) {
+            return { ...ques };
+        } else {
+            if (targetOptionIndex === -1) {
+                return { ...ques, options: [...ques.options, newOption] };
+            } else {
+                const copyOptions = [...ques.options];
+                copyOptions[targetOptionIndex] = newOption;
+                return {
+                    ...ques,
+                    options: copyOptions
+                };
+            }
+        }
+    });
+    return edited;
 }
 
 /***
